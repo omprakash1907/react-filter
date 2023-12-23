@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Users = ({ user, setUser }) => {
+
+    const [noRecords, setNoRecords] = useState(false);
+
+    useEffect(() => {
+        if (user.length === 0) {
+            setNoRecords(true);
+        } else {
+            setNoRecords(false);
+        }
+    }, [user]);
 
     const handleDelete = (id) => {
         const temp = [...user]
@@ -29,20 +39,27 @@ const Users = ({ user, setUser }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            user && user.map((item, index) => {
-                                return (
-                                    <tr>
-                                        <td scope="row">{index + 1}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.email}</td>
-                                        <td>
-                                            <Link to={`/edituser/${index}`}><button className='btn btn-edit me-2 '><i class="fa-solid fa-file-pen text-white "></i></button></Link>
-                                            <button className='btn btn-delete' onClick={() => handleDelete(index)}> <i class="fa-solid fa-trash-can text-white "></i></button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
+                        {noRecords ? (
+                            <>
+                                <td className='text-center fw-bold  pe-0 py-3' colSpan={4}>No Records</td>
+                                <td className='p-0'></td>
+                                <td className='p-0'></td>
+                                <td className='p-0'></td>
+                            </>
+                        ) : (user && user.map((item, index) => {
+                            return (
+                                <tr>
+                                    <td scope="row">{index + 1}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.email}</td>
+                                    <td>
+                                        <Link to={`/edituser/${index}`}><button className='btn btn-edit me-2 '><i class="fa-solid fa-file-pen text-white "></i></button></Link>
+                                        <button className='btn btn-delete' onClick={() => handleDelete(index)}> <i class="fa-solid fa-trash-can text-white "></i></button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                        )
                         }
 
                     </tbody>

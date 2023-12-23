@@ -27,7 +27,7 @@ function App() {
         <main className='w-100 dark-theme'>
           <Header />
           <Routes >
-            <Route path="/dashboard" element={<Dashboard />} ></Route>
+            <Route path="/" element={<Dashboard />} ></Route>
             <Route path="/users" element={<Users user={user} setUser={setUser} />} ></Route>
             <Route path="/adduser" element={<AddUser user={user} setUser={setUser} />} ></Route>
             <Route path="/edituser/:id" element={<EditUser user={user} setUser={setUser} />} ></Route>

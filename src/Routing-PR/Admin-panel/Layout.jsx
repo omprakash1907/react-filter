@@ -19,7 +19,7 @@ const Layout = () => {
       <nav className='mt-4'>
         <ul>
           <li>
-            <Link to="/dashboard"><i class="fa-solid fa-house me-2 py-2 text-theme mb-1"></i><span className='text-theme'>Dashboard</span></Link>
+            <Link to="/"><i class="fa-solid fa-house me-2 py-2 text-theme mb-1"></i><span className='text-theme'>Dashboard</span></Link>
           </li>
           <li>
             <Link to="/users"><i class="fa-solid fa-user me-2 py-2 text-theme mb-1"></i><span className='text-theme'>Users</span></Link>
